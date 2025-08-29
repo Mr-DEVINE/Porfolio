@@ -7,54 +7,106 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 30% 70%, #1e40af 0%, transparent 40%),
+                        radial-gradient(circle at 80% 20%, #4f46e5 0%, transparent 30%);
+            animation: animate-gradient 15s ease-in-out infinite;
+            filter: blur(100px);
+        }
+        @keyframes animate-gradient {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        .glass-header {
+            background-color: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.5);
+            border-color: rgba(79, 70, 229, 0.8);
+        }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            background: #4f46e5;
+            color: #fff;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="text-slate-300">
+    <div class="gradient-bg"></div>
 
     <!-- Header & Navigation -->
-    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+    <header class="glass-header fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white tracking-wider">SP</a>
             <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-gray-300 hover:text-indigo-400 transition duration-300">About</a>
-                <a href="#projects" class="text-gray-300 hover:text-indigo-400 transition duration-300">Projects</a>
-                <a href="#skills" class="text-gray-300 hover:text-indigo-400 transition duration-300">Skills</a>
-                <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition duration-300">Contact</a>
+                <a href="#about" class="text-slate-300 hover:text-indigo-400 transition duration-300">About</a>
+                <a href="#projects" class="text-slate-300 hover:text-indigo-400 transition duration-300">Projects</a>
+                <a href="#skills" class="text-slate-300 hover:text-indigo-400 transition duration-300">Skills</a>
+                <a href="#contact" class="text-slate-300 hover:text-indigo-400 transition duration-300">Contact</a>
             </nav>
-            <button id="mobile-menu-button" class="md:hidden">
+            <button id="mobile-menu-button" class="md:hidden text-white">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-gray-300 hover:text-indigo-400">About</a>
-            <a href="#projects" class="block py-2 text-gray-300 hover:text-indigo-400">Projects</a>
-            <a href="#skills" class="block py-2 text-gray-300 hover:text-indigo-400">Skills</a>
-            <a href="#contact" class="block py-2 text-gray-300 hover:text-indigo-400">Contact</a>
+            <a href="#about" class="block py-2 text-slate-300 hover:text-indigo-400">About</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-indigo-400">Projects</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-indigo-400">Skills</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-indigo-400">Contact</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 pt-24">
+    <main class="container mx-auto px-6 pt-24 relative z-10">
 
         <!-- Hero Section -->
-        <section id="hero" class="min-h-[calc(100vh-6rem)] flex items-center">
+        <section id="hero" class="min-h-[calc(100vh-6rem)] flex items-center fade-in-section">
             <div class="max-w-3xl">
-                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-200 to-slate-400">
                     Hi, I'm Sachin Kumar Purbey
                 </h1>
-                <h2 class="text-2xl md:text-3xl font-medium text-indigo-400 mb-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-indigo-400 mb-6">
                     Aspiring Software Developer & QA Engineer
                 </h2>
-                <p class="text-lg text-gray-300 mb-8 max-w-xl">
+                <p class="text-lg text-slate-400 mb-8 max-w-xl">
                     A dedicated Computer Science student with a passion for building robust applications and ensuring software quality. Experienced in API testing, machine learning, and web development.
                 </p>
-                <a href="#projects" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 inline-flex items-center">
+                <a href="#projects" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 inline-flex items-center shadow-lg shadow-indigo-600/30">
                     View My Work
                     <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
                 </a>
@@ -62,22 +114,22 @@
         </section>
 
         <!-- About Me Section -->
-        <section id="about" class="py-20">
-            <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+        <section id="about" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/3">
                     <img src="./Img/Sachin.jpg" 
-                         onerror="this.onerror=null;this.src=./Img/Sachin.jpg"
-                         alt="A portrait of Sachin Kumar Purbey" class="rounded-full shadow-lg w-64 h-64 mx-auto object-cover">
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/0a0a0a/e2e8f0?text=SP';"
+                         alt="A portrait of Sachin Kumar Purbey" class="rounded-full shadow-lg w-64 h-64 mx-auto object-cover border-4 border-indigo-500/50">
                 </div>
                 <div class="md:w-2/3">
-                    <p class="text-gray-300 text-lg mb-4">
+                    <p class="text-slate-400 text-lg mb-4">
                         Hello! I'm Sachin, a Computer Science and Engineering student at JAIN University, Bengaluru. My journey in tech is driven by a curiosity for solving complex problems and creating impactful software.
                     </p>
-                    <p class="text-gray-300 text-lg mb-4">
+                    <p class="text-slate-400 text-lg mb-4">
                         I recently interned as a Quality Assurance Engineer at Bitspanda Technology, where I honed my skills in API testing with Postman and collaborated within an Agile framework. This experience gave me valuable insights into system integration and data validation.
                     </p>
-                    <p class="text-gray-300 text-lg">
+                    <p class="text-slate-400 text-lg">
                         Beyond my coursework and internship, I love to build personal projects, from machine learning models that predict IPL scores to practical Java applications. I'm always eager to learn new technologies and apply my skills to real-world challenges.
                     </p>
                 </div>
@@ -85,56 +137,72 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20">
-            <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <section id="projects" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project Card 1 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-300">
-                    <img src="https://placehold.co/600x400/1e293b/9ca3af?text=Project+1" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/1e293b/9ca3af?text=Image+Error';"
-                         alt="Project 1 Screenshot" class="w-full h-48 object-cover">
+                <div class="project-card rounded-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/0a0a0a/e2e8f0?text=ML+Project" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a0a/e2e8f0?text=Image+Error';"
+                         alt="Project 1 Screenshot" class="w-full h-56 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">IPL Score Prediction</h3>
-                        <p class="text-gray-400 mb-4">Developed regression models (Random Forest, XGBoost) to forecast IPL inning scores, applying feature engineering to improve accuracy.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-white">IPL Score Prediction</h3>
+                        <p class="text-slate-400 mb-4">Developed regression models (Random Forest, XGBoost) to forecast IPL inning scores.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">Python</span>
+                            <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">Machine Learning</span>
+                        </div>
                         <a href="https://github.com/Mr-DEVINE/IPL-Score-Prediction" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold inline-flex items-center">
                             View Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                         </a>
                     </div>
                 </div>
                 <!-- Project Card 2 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-300">
-                    <img src="https://placehold.co/600x400/1e293b/9ca3af?text=Project+2" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/1e293b/9ca3af?text=Image+Error';"
-                         alt="Project 2 Screenshot" class="w-full h-48 object-cover">
+                <div class="project-card rounded-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/0a0a0a/e2e8f0?text=Web+Project" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a0a/e2e8f0?text=Image+Error';"
+                         alt="Project 2 Screenshot" class="w-full h-56 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">MenShopWeb - Ecommerce Website</h3>
-                        <p class="text-gray-400 mb-4">Designed a responsive men's fashion e-commerce site using HTML, CSS, and JavaScript, integrating Google Maps and contact functionality.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-white">MenShopWeb - Ecommerce Website</h3>
+                        <p class="text-slate-400 mb-4">Designed a responsive men's fashion e-commerce site with Google Maps integration.</p>
+                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">HTML</span>
+                            <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">CSS</span>
+                             <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">JavaScript</span>
+                        </div>
                         <a href="https://github.com/Mr-DEVINE/MenShopWeb" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold inline-flex items-center">
                             View Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                         </a>
                     </div>
                 </div>
                 <!-- Project Card 3 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-300">
-                    <img src="https://placehold.co/600x400/1e293b/9ca3af?text=Project+3" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/1e293b/9ca3af?text=Image+Error';"
-                         alt="Project 3 Screenshot" class="w-full h-48 object-cover">
+                <div class="project-card rounded-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/0a0a0a/e2e8f0?text=Java+App" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a0a/e2e8f0?text=Image+Error';"
+                         alt="Project 3 Screenshot" class="w-full h-56 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Password-Generator</h3>
-                        <p class="text-gray-400 mb-4">A command-line password generator application built in Java with customizable length and character sets.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Password-Generator</h3>
+                        <p class="text-slate-400 mb-4">A command-line password generator application with customizable length and character sets.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">Java</span>
+                        </div>
                         <a href="https://github.com/Mr-DEVINE/Password-Generator" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold inline-flex items-center">
                             View Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                         </a>
                     </div>
                 </div>
                  <!-- Project Card 4 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition duration-300">
-                    <img src="https://placehold.co/600x400/1e293b/9ca3af?text=Project+4" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/1e293b/9ca3af?text=Image+Error';"
-                         alt="Project 4 Screenshot" class="w-full h-48 object-cover">
+                <div class="project-card rounded-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/0a0a0a/e2e8f0?text=ML+Project" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a0a/e2e8f0?text=Image+Error';"
+                         alt="Project 4 Screenshot" class="w-full h-56 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Parkinson's Disease Detection</h3>
-                        <p class="text-gray-400 mb-4">Built SVM and Random Forest classifiers using a voice dataset. Utilized GridSearchCV for hyperparameter tuning to optimize model accuracy.</p>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Parkinson's Disease Detection</h3>
+                        <p class="text-slate-400 mb-4">Built SVM and Random Forest classifiers using a voice dataset to detect Parkinson's disease.</p>
+                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">Python</span>
+                            <span class="text-xs font-semibold bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded-full">Scikit-learn</span>
+                        </div>
                         <a href="https://github.com/Mr-DEVINE/Parkinsons-Disease-Detection" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold inline-flex items-center">
                             View Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                         </a>
@@ -144,34 +212,34 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20">
-            <h2 class="text-4xl font-bold text-center mb-12">Technical Skills</h2>
+        <section id="skills" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Technical Skills</h2>
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-wrap justify-center gap-4">
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">Java</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">Python</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">SQL</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">HTML5</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">CSS</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">JavaScript</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">AWS</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">Linux</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">Git</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">Postman</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">JIRA</span>
-                    <span class="bg-gray-700 text-gray-200 px-4 py-2 rounded-full text-lg font-medium">Docker</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">Java</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">Python</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">SQL</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">HTML5</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">CSS</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">JavaScript</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">AWS</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">Linux</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">Git</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">Postman</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">JIRA</span>
+                    <span class="skill-tag text-slate-300 px-4 py-2 rounded-lg text-lg font-medium">Docker</span>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20">
-            <h2 class="text-4xl font-bold text-center mb-4">Get In Touch</h2>
-            <p class="text-lg text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        <section id="contact" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-4 text-white">Get In Touch</h2>
+            <p class="text-lg text-slate-400 text-center mb-12 max-w-2xl mx-auto">
                 I'm currently open to new opportunities and collaborations. Feel free to reach out if you have a project in mind or just want to connect!
             </p>
             <div class="text-center">
-                <a href="mailto:sachinpurbey2058@gmail.com" class="bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-700 transition duration-300 inline-flex items-center text-xl">
+                <a href="mailto:sachinpurbey2058@gmail.com" class="bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-700 transition duration-300 inline-flex items-center text-xl shadow-lg shadow-indigo-600/30">
                     <i data-lucide="mail" class="w-6 h-6 mr-3"></i>
                     Say Hello
                 </a>
@@ -181,8 +249,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 border-t border-gray-700 mt-20">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+    <footer class="border-t border-slate-800 mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
             <div class="flex justify-center space-x-6 mb-4">
                 <a href="https://github.com/Mr-DEVINE" target="_blank" class="hover:text-indigo-400 transition duration-300"><i data-lucide="github" class="w-6 h-6"></i></a>
                 <a href="https://linkedin.com/in/sachin-kumar-purbey/" target="_blank" class="hover:text-indigo-400 transition duration-300"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
@@ -209,6 +277,22 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const sections = document.querySelectorAll('.fade-in-section');
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
